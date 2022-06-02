@@ -1,6 +1,6 @@
 ## 制作插入Payload的xlsx文件
 
-创建`xlsl`文件，后缀改为 .zip 然后解压缩。
+创建`xlsx`文件，后缀改为 .zip 然后解压缩。
 
 > ⚠️ xls是一个特有的二进制格式,xls没办法插入Payload进行XXE攻击.
 
