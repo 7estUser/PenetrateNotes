@@ -39,7 +39,7 @@ JavaScript伪协议，超链接的地方就可能会存在
 </svg>
 ```
 
-## 存储型XSS
+## 上传文件导致存储型XSS
 上传文件修改为 `.html` ，内容为 `<img src=1 onerror=alert(document.domain)>`
 
 ## DOM XSS出现位置函数
