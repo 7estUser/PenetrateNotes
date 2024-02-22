@@ -4,6 +4,7 @@
 - 文件上传的地方
 上传文件修改为 `.html` ，内容为 `<image src=1 onerror=alert(document.domain)>`，然后去访问这个文件   
 - svg插入xss	
+- pdf插入xss
 
 ## 常用POC:
 - `"><script>alert(1)</script>`  
