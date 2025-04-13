@@ -31,8 +31,6 @@
 #### 查值
 `select group_concat(列名1,';',列名2) from (select * from 库名.表名 limit 0,10) as a`
 
-
-
 ### GetShell
 #### 查看数据库路径
 `show variables like '%datadir%'` 通过显示数据库所在的路径来猜测web路径
